@@ -14,6 +14,10 @@ import (
 	dpdkproto "github.com/ironcore-dev/dpservice/go/dpservice-go/proto"
 )
 
+// Deprecated: This legacy client interface is superseded by clientv2. Prefer
+// using the domain-scoped APIs provided by package clientv2. Construct a v2
+// client with clientv2.NewFromProto or adapt an existing legacy client with
+// clientv2.AsV2. The legacy Client will be removed in a future major release.
 type Client interface {
 	GetLoadBalancer(ctx context.Context, id string, ignoredErrors ...[]uint32) (*api.LoadBalancer, error)
 	ListLoadBalancers(ctx context.Context, ignoredErrors ...[]uint32) (*api.LoadBalancerList, error)
@@ -75,6 +79,10 @@ type client struct {
 	dpdkproto.DPDKironcoreClient
 }
 
+// Deprecated: Use clientv2.NewFromProto(rpc) to obtain a v2 client with
+// domain-scoped sub-clients, or clientv2.AsV2(legacy) to adapt an existing
+// legacy client value. This constructor will be removed in a future major
+// release.
 func NewClient(protoClient dpdkproto.DPDKironcoreClient) Client {
 	return &client{protoClient}
 }
