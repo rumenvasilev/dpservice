@@ -9,6 +9,7 @@ enum InterfaceType {
 	BAREMETAL = 1;
 }
 
+//// Why not use 4 and 6 like here https://github.com/rumenvasilev/metalbond/blob/master/types.go#L74?
 enum IpVersion {
 	IPV4 = 0;
 	IPV6 = 1;
